@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "echo 'Build script is running'",
     "dev": "node main.js",
     "test": "mocha"
   },

@@ -1,5 +1,8 @@
 pipeline {
     agent any
+        tools {
+            nodejs("24.6.0")
+        }
         stages {
             stage("checkout") {
             steps {
@@ -9,6 +12,7 @@ pipeline {
 
                   stage("test") {
                         steps {
+                           sh 'npm version'
                            sh 'npm install'
                            sh 'npm test'
                         }

@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
             PATH = "/usr/local/bin:$PATH"
-            DOCKER_IMAGE = "dineshkumar.nilan@gmail.com/my-node-app:${env.BUILD_NUMBER}"
+            DOCKER_IMAGE = "dineshkumarnilan/my-node-app:${env.BUILD_NUMBER}"
         }
         tools {
             nodejs("24.6.0")
@@ -44,7 +44,7 @@ pipeline {
 
         stage("Push Docker Image") {
                     steps {
-                        withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', usernameVariable: 'dineshkumar.nilan@gmail.com', passwordVariable: 'Nilan@90')]) {
+                        withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', usernameVariable: 'dineshkumarnilan', passwordVariable: 'Nilan@90')]) {
                             sh "echo $PASSWORD | docker login -u $USERNAME --password-stdin"
                             sh "docker push $DOCKER_IMAGE"
                         }

@@ -3,6 +3,8 @@ pipeline {
     environment {
             PATH = "/usr/local/bin:$PATH"
             DOCKER_IMAGE = "dineshkumarnilan/my-node-app:${env.BUILD_NUMBER}"
+            NODE_ENV = "production"
+            APP_PORT = "3000"
         }
         tools {
             nodejs("24.6.0")

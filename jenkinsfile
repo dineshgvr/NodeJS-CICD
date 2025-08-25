@@ -32,12 +32,46 @@ pipeline {
                 steps {
                     sh 'npm run build'
                 }
+            }
+
+  stage("Build Docker Image") {
+            steps {
+                sh "docker build -t $DOCKER_IMAGE ."
+            }
+        }
+
+
+        stage("Push Docker Image") {
+                    steps {
+                        withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', usernameVariable: 'dineshkumar.nilan@gmail.com', passwordVariable: 'Nilan@90')]) {
+                            sh "echo $PASSWORD | docker login -u $USERNAME --password-stdin"
+                            sh "docker push $DOCKER_IMAGE"
+                        }
+                    }
                 }
 
-          stage("Build Image") {
-                steps {
-                    sh 'docker build -t my-node-app:1.0 .'
-                }
-          }
+
+                 stage("Deploy Docker Container") {
+                            steps {
+                                sh """
+                                docker stop my-node-app || true
+                                docker rm my-node-app || true
+                                docker run -d --name my-node-app \
+                                    -p $APP_PORT:3000 \
+                                    -e NODE_ENV=$NODE_ENV \
+                                    $DOCKER_IMAGE
+                                """
+                            }
+                        }
+
+
+                         post {
+                                success {
+                                    echo '✅ Deployment successful!'
+                                }
+                                failure {
+                                    echo '❌ Deployment failed!'
+                                }
+                            }
     }
 }

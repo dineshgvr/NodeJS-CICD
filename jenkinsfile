@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+            PATH = "/usr/local/bin:$PATH"   // 👈 add this line so Jenkins sees docker
+        }
         tools {
             nodejs("24.6.0")
         }

@@ -1,16 +1,23 @@
 pipeline {
     agent any
     environment {
-            PATH = "/usr/local/bin/docker:$PATH"   // 👈 add this line so Jenkins sees docker
+            PATH = "/usr/local/bin:$PATH"   // 👈 add this line so Jenkins sees docker
         }
         tools {
             nodejs("24.6.0")
-        }
+        }wh
         stages {
             stage("checkout") {
             steps {
                 checkout scm
                    }
+            }
+
+            stage("Docker Check") {
+              steps {
+                sh 'which docker'
+                sh 'docker --version'
+              }
             }
 
                   stage("test") {

@@ -8,12 +8,6 @@ const fs = require('fs');
 const server = http.createServer(app);
 const multer = require('multer');
 
-// const upload = multer({
-//     dest: 'uploads/',
-// })
-//
-
-
 
 db.connect('mongodb://127.0.0.1:27017/sample_restaurants').then((e) => {
     console.log('Connected to MongoDB');

@@ -4,7 +4,7 @@ pipeline {
             stage("checkout") {
             steps {
                 checkout scm
-            }
+                   }
             }
 
                   stage("test") {
@@ -15,10 +15,12 @@ pipeline {
                         }
 
 
-                              stage("build") {
-                                    steps {
-                                        sh 'npm run build'
-                                    }
-                                    }
+          stage("build") {
+                steps {
+                    sh 'npm run build'
+                }
+                }
+
+                }
     }
 }

@@ -5,7 +5,7 @@ pipeline {
         }
         tools {
             nodejs("24.6.0")
-        }wh
+        }
         stages {
             stage("checkout") {
             steps {

@@ -1,15 +1,14 @@
 {
-  "name": "untitled3",
+  "name": "NodeJS-CICD",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A basic node.js server using mongoDB and allowing the user to upload files from the frontend to the backend.",
+  "main": "main.js",
   "scripts": {
-    "build": "echo 'Build script is running'",
     "dev": "node main.js",
     "test": "mocha"
   },
   "keywords": [],
-  "author": "",
+  "author": "dineshgvr",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {

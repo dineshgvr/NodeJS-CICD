@@ -8,7 +8,7 @@ const fs = require('fs');
 const server = http.createServer(app);
 const multer = require('multer');
 
-db.connect('mongodb://127.0.0.1:27017/sample_restaurants').then((e) => {
+db.connect('mongodb://180.149.46.117/sample_restaurants').then((e) => {
     console.log('Connected to MongoDB');
 }).catch((err) => {
     console.log('Error >>>');
@@ -120,6 +120,6 @@ app.use("/api", routes);
 // });
 //
 
-server.listen(3000, () => {
+server.listen(3001, () => {
     console.log('listening on port 3000');
 });

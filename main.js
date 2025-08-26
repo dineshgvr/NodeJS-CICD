@@ -120,6 +120,6 @@ app.use("/api", routes);
 // });
 //
 
-server.listen(3001, () => {
+server.listen(3000, () => {
     console.log('listening on port 3000');
 });

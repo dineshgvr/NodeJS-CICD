@@ -11,7 +11,7 @@ const multer = require('multer');
 db.connect('mongodb://180.149.46.117/sample_restaurants').then((e) => {
     console.log('Connected to MongoDB');
 }).catch((err) => {
-    console.log('Error >>>');
+    console.log('Error >>>', err);
 });
 
 app.use(cors(
